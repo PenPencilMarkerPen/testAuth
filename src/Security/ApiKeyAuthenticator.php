@@ -41,6 +41,10 @@ class ApiKeyAuthenticator extends AbstractAuthenticator
 
         $user = $this->userRepository->findOneBy(['token' => $apiToken]);
 
+        if ($user === null)
+            throw new CustomUserMessageAuthenticationException('API token is not valid');
+
+
         return new SelfValidatingPassport(new UserBadge($user->getEmail()));
     }
 
