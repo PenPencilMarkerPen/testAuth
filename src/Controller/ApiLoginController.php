@@ -39,8 +39,8 @@ class ApiLoginController extends BaseController
     #[Route('/api/test', name: 'api_test', methods: ['GET'])]
     public function test(): JsonResponse
     {
-        var_dump($this->getUserInfo());
         return $this->json([
+            'user' => $this->getUserInfo(),
             'message' => 'hello',
         ]);
     }
