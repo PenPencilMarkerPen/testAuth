@@ -17,7 +17,7 @@ RUN chmod 777 /var/www/project
 
 COPY ../ /var/www/project
 
-RUN composer install
+RUN composer update
 
 
 

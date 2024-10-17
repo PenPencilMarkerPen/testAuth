@@ -11,7 +11,7 @@ use Symfony\Component\Security\Http\Attribute\CurrentUser;
 use Doctrine\ORM\EntityManagerInterface;
 
 
-class ApiLoginController extends AbstractController
+class ApiLoginController extends BaseController
 {
     #[Route('/api/login', name: 'api_login', methods: ['POST'])]
     public function index(#[CurrentUser] ?User $user, EntityManagerInterface $entityManager): JsonResponse
@@ -39,6 +39,7 @@ class ApiLoginController extends AbstractController
     #[Route('/api/test', name: 'api_test', methods: ['GET'])]
     public function test(): JsonResponse
     {
+        var_dump($this->getUserInfo());
         return $this->json([
             'message' => 'hello',
         ]);
